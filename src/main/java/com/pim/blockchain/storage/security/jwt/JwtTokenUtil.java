@@ -21,6 +21,8 @@ public class JwtTokenUtil implements Serializable {
 	static final String CLAIM_KEY_USERNAME = "sub";
 	static final String CLAIM_KEY_CREATED  = "created";
 	static final String CLAIM_KEY_EXPIRED  = "exp";
+
+	private static final CharSequence TOKEN_PREFIX = "Bearer";
 	
 	@Value("${jwt.secret}")
 	private String secret;
@@ -58,7 +60,7 @@ public class JwtTokenUtil implements Serializable {
 		try {
 			claims = Jwts.parser()
 					.setSigningKey( secret )
-					.parseClaimsJws(token)
+					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
 					.getBody();
 		}catch (Exception e) {
 			// TODO: handle exception

@@ -30,7 +30,6 @@ public class ChaveController {
 	ChaveService chaveService;
 	
 	@PostMapping
-	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<Chave>> incluirChave( HttpServletRequest request, @RequestBody Chave chave, BindingResult result ){
 		Response<Chave> response = new Response<Chave>();
 		
