@@ -7,5 +7,5 @@ import com.pim.blockchain.storage.entity.Categoria;
 
 @Repository
 public interface CategoriaRepository extends PagingAndSortingRepository<Categoria, Integer> {
-	
+
 }

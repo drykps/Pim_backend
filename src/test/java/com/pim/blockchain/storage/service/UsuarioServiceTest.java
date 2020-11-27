@@ -22,7 +22,7 @@ public class UsuarioServiceTest extends BlockchainStorageApplicationTests {
 	
 	@Before
 	public void setUp() {
-		usuario = new Usuario("email@blockchainstorage.com.br", "password123");
+		//usuario = new Usuario("email@blockchainstorage.com.br", "password123");
 	}
 	
 	@Test
@@ -77,9 +77,9 @@ public class UsuarioServiceTest extends BlockchainStorageApplicationTests {
 	
 	@Test
 	public void devebuscarTodasUsuarios() {
-		usuarioService.incluirUsuario(new Usuario("usuario1@blockchainstorage.com", "123456"));
-		usuarioService.incluirUsuario(new Usuario("usuario2@blockchainstorage.com", "123456"));
-		usuarioService.incluirUsuario(new Usuario("usuario3@blockchainstorage.com", "123456"));
+//		usuarioService.incluirUsuario(new Usuario("usuario1@blockchainstorage.com", "123456"));
+//		usuarioService.incluirUsuario(new Usuario("usuario2@blockchainstorage.com", "123456"));
+//		usuarioService.incluirUsuario(new Usuario("usuario3@blockchainstorage.com", "123456"));
 		
 		Page<Usuario> todasUsuarios = usuarioService.buscarTodosUsuarios(0, 10);
 		

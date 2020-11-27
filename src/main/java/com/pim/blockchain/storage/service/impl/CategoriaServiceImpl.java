@@ -40,7 +40,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 
 	@Override
 	public Page<Categoria> buscarTodasCategorias(int pagina, int count) {
-		return categoriaRepository.findAll( PageRequest.of( pagina, count) );
+		return categoriaRepository.findAll(PageRequest.of( pagina, count) );
 	}
 
+	
+	
 }

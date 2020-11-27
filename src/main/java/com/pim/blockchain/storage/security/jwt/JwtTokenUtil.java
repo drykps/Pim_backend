@@ -60,7 +60,7 @@ public class JwtTokenUtil implements Serializable {
 		try {
 			claims = Jwts.parser()
 					.setSigningKey( secret )
-					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+					.parseClaimsJws(token.replace(TOKEN_PREFIX, "").trim())
 					.getBody();
 		}catch (Exception e) {
 			// TODO: handle exception

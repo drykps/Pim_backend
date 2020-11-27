@@ -30,7 +30,7 @@ public class ChaveController {
 	ChaveService chaveService;
 	
 	@PostMapping
-	public ResponseEntity<Response<Chave>> incluirChave( HttpServletRequest request, @RequestBody Chave chave, BindingResult result ){
+	public ResponseEntity<Response<Chave>> incluirChave( HttpServletRequest request, @RequestBody Chave chave, BindingResult result ) throws Exception{
 		Response<Chave> response = new Response<Chave>();
 		
 		if( result.hasErrors() ) {
@@ -105,6 +105,7 @@ public class ChaveController {
 		Response<Page<Chave>> response = new Response<Page<Chave>>();
 		
 		Page<Chave> chaves = chaveService.buscarTodasChaves( page, count );
+		System.out.println(chaves.getSize());
 		response.setData( chaves );
 		return ResponseEntity.ok( response );
 	}

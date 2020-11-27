@@ -7,8 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.pim.blockchain.storage.entity.Categoria;
 import com.pim.blockchain.storage.entity.Chave;
 import com.pim.blockchain.storage.repository.ChaveRepository;
+import com.pim.blockchain.storage.service.CategoriaService;
 import com.pim.blockchain.storage.service.ChaveService;
 
 @Service
@@ -16,9 +18,17 @@ public class ChaveServiceImpl implements ChaveService {
 
 	@Autowired
 	private ChaveRepository chaveRepository;
+	
+	@Autowired
+	private CategoriaService categoria;
 
 	@Override
-	public Optional<Chave> incluirChave(Chave chave) {
+	public Optional<Chave> incluirChave(Chave chave) throws Exception {
+		Optional<Categoria> categoriaBanco = categoria.buscarCategoriaPeloId(chave.getIdCategoria());
+		if (!categoriaBanco.isPresent()) {
+			throw new Exception("Categoria inexistente");
+		}
+		chave.setIdCategoria(categoriaBanco.get().getId());
 		return Optional.ofNullable(chaveRepository.save(chave));
 	}
 

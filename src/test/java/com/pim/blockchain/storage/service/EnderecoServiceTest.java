@@ -1,14 +1,6 @@
 package com.pim.blockchain.storage.service;
 
-import static org.junit.Assert.fail;
-
-import java.util.Optional;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 
 import com.pim.blockchain.storage.BlockchainStorageApplicationTests;
 import com.pim.blockchain.storage.entity.Endereco;

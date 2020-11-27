@@ -26,7 +26,7 @@ public class BlockchainStorageApplication {
 	
 	
 	private void initUsers(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
-		Usuario usuario = new Usuario("admin@blockchainstorage.com", passwordEncoder.encode( "123456" ), TipoUsuarioEnum.ROLE_ADMIN);
+		Usuario usuario = new Usuario("admin@blockchainstorage.com", passwordEncoder.encode( "123456" ), TipoUsuarioEnum.ROLE_ADMIN, "Adriana Penha", "42717643734");
 		
 		Usuario usuarioBanco = usuarioRepository.findByEmail( usuario.getEmail() );
 		if( usuarioBanco == null) {

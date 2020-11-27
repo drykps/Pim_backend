@@ -13,7 +13,6 @@ import org.springframework.data.domain.Page;
 
 import com.pim.blockchain.storage.BlockchainStorageApplicationTests;
 import com.pim.blockchain.storage.entity.Categoria;
-import com.pim.blockchain.storage.entity.Usuario;
 
 public class CategoriaServiceTest extends BlockchainStorageApplicationTests {
 	

@@ -18,16 +18,18 @@ public class Chave {
     @NotBlank(message="Nome é obrigatório")
     private String nomeChave;
     private String valorChave;
+    private int idCategoria;
     private LocalDate dataCriacao;
-    
+
     public Chave() {
     	this.dataCriacao = LocalDate.now();
     }
     
-    public Chave(String nomeChave, String valorChave) {
+    public Chave(String nomeChave, String valorChave, int idCategoria) {
     	this();
     	this.nomeChave = nomeChave;
     	this.valorChave = valorChave;
+    	this.setIdCategoria(idCategoria);
     }
 
 	public int getId() {
@@ -65,6 +67,13 @@ public class Chave {
 		this.valorChave = valorChave;
 		return this;
 	}
-    
 
+		public int getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+    
 }

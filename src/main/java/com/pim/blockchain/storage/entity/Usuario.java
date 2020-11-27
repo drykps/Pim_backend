@@ -20,7 +20,8 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+	private String nome;
+	private String documento;
     @NotBlank(message="Email é obrigatório")
     @Email(message="Email invalido")
     private String email;
@@ -29,28 +30,29 @@ public class Usuario {
     private String senha;
     @Enumerated(EnumType.ORDINAL)
     private TipoUsuarioEnum tipoUsuario;
-    private boolean ativo;
-    private Date ultimoLogin;
+    private boolean ativo = true;
+	private Date ultimoLogin;
     private Date dataCriacao;
     
-    public Usuario(	String email, String senha) {
-		this(email, senha, TipoUsuarioEnum.ROLE_CLIENTE);
+    public Usuario(	String email, String senha, String nome, String documento) {
+    	this(email, senha, TipoUsuarioEnum.ROLE_CLIENTEPF, nome , documento);
 	}
     
     public Usuario(	@NotBlank(message = "Email é obrigatório") 
 					@Email(message = "Email invalido") String email,
 					@NotBlank(message = "Senha é obrigatória") @Size(min = 6) String senha,
-					TipoUsuarioEnum tipoUsuario) {
-		super();
+					TipoUsuarioEnum tipoUsuario, String nome, String documento) {
+    	super();
 		this.email = email;
 		this.senha = senha;
-		this.dataCriacao = new Date();
 		this.tipoUsuario = tipoUsuario;
-		this.ativo = true;
+		this.nome = nome;
+		this.documento = documento;
 	}
     
     public Usuario() {
-    	
+    	this.dataCriacao = new Date();
+    	this.ativo = true;
     }
     
 	public int getId() {
@@ -116,5 +118,20 @@ public class Usuario {
 		return this;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
 
 }

@@ -32,6 +32,10 @@ public class Categoria {
     	this.dataCriacao = LocalDate.now();
     }
 
+	public Categoria(int id) {
+		
+	}
+
 	public int getId() {
 		return id;
 	}

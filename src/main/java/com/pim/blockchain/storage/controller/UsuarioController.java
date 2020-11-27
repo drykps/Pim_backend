@@ -37,7 +37,6 @@ public class UsuarioController {
 	PasswordEncoder passwordEncoder;
 	
 	@PostMapping
-	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<Usuario>> criar( HttpServletRequest request, @RequestBody Usuario usuario, BindingResult result ){
 		Response<Usuario> response = new Response<Usuario>();
 		
@@ -99,18 +98,6 @@ public class UsuarioController {
 		return ResponseEntity.ok( response );
 	}
 	
-	private void validarCriarUsuario( Usuario usuario, BindingResult result ) {
-		if(  usuario.getEmail() == null || StringUtils.isEmpty( usuario.getEmail()) ) {
-			result.addError( new ObjectError( "Usuario", "Nenhum email informado." ) );
-		}
-	}
-	
-	private void validarAtualizarUsuario( Usuario usuario, BindingResult result ) {
-		if(  usuario.getEmail() == null || usuario.getId() == 0  ) {
-			result.addError( new ObjectError( "Usuario", "Nenhum usuário existente." ) );
-		}
-	}
-	
 	@GetMapping( value = "{id}")
 	public ResponseEntity<Response<Usuario>> encontrarUsuarioPorId( @PathVariable("id") String id){
 		Response<Usuario> response = new Response<Usuario>();
@@ -152,6 +139,18 @@ public class UsuarioController {
 		Page<Usuario> usuarios = usuarioService.buscarTodosUsuarios( page, count );
 		response.setData( usuarios );
 		return ResponseEntity.ok( response );
+	}
+	
+	private void validarCriarUsuario( Usuario usuario, BindingResult result ) {
+		if(  usuario.getEmail() == null || StringUtils.isEmpty( usuario.getEmail()) ) {
+			result.addError( new ObjectError( "Usuario", "Nenhum email informado." ) );
+		}
+	}
+	
+	private void validarAtualizarUsuario( Usuario usuario, BindingResult result ) {
+		if(  usuario.getEmail() == null || usuario.getId() == 0  ) {
+			result.addError( new ObjectError( "Usuario", "Nenhum usuário existente." ) );
+		}
 	}
 	
 }

@@ -108,5 +108,15 @@ public class CategoriaController {
 		response.setData( categorias );
 		return ResponseEntity.ok( response );
 	}
+	
+//	@GetMapping( value = "{page}/{count}")
+//	@PreAuthorize("hasAnyRole('ADMIN')")
+//	public ResponseEntity<Response<Page<Categoria>>> buscarTodasCategoriasAtivas( @PathVariable int page, @PathVariable int count){
+//		Response<Page<Categoria>> response = new Response<Page<Categoria>>();
+//		
+////		Page<Categoria> categorias = categoriaService.buscarTodasCategoriasAtivas( page, count );
+////		response.setData( categorias );
+////		return ResponseEntity.ok( response );
+//	}
 
 }

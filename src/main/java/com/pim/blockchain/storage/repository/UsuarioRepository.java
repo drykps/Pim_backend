@@ -10,5 +10,4 @@ public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, I
 	
 	Usuario findByEmail(String email);
 
-	
 }

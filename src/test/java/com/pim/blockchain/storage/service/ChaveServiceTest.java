@@ -22,7 +22,7 @@ public class ChaveServiceTest extends BlockchainStorageApplicationTests {
 	
 	@Before
 	public void setUp() {
-		chave = new Chave("Nome Mock Padrao", "VALOR CHAVE");
+	//	chave = new Chave("Nome Mock Padrao", "VALOR CHAVE");
 	}
 	
 	@Test
@@ -38,9 +38,9 @@ public class ChaveServiceTest extends BlockchainStorageApplicationTests {
 	@Test
 	public void deveAtualizarChave() {
 			
-		Optional<Chave> novaChave = chaveService.incluirChave(chave);
+	//	Optional<Chave> novaChave = chaveService.incluirChave(chave);
 		
-		chave = novaChave.get().setValorChave("NOVO VALOR CHAVE");
+	//	chave = novaChave.get().setValorChave("NOVO VALOR CHAVE");
 		
 		Optional<Chave> chaveAlterada = chaveService.alterarChave(chave);
 		
@@ -52,35 +52,35 @@ public class ChaveServiceTest extends BlockchainStorageApplicationTests {
 	
 	@Test
 	public void deveExcluirChave() {
-		Optional<Chave> novaChave = chaveService.incluirChave(chave);
+//		Optional<Chave> novaChave = chaveService.incluirChave(chave);
 		
-		chaveService.excluirChave(novaChave.get().getId());
+	//	chaveService.excluirChave(novaChave.get().getId());
 				
-		Optional<Chave> buscarChavePeloId = chaveService.buscarChavePeloId(novaChave.get().getId());
+	//	Optional<Chave> buscarChavePeloId = chaveService.buscarChavePeloId(novaChave.get().getId());
 		
-		if( buscarChavePeloId.isPresent() ) {
+	//	if( buscarChavePeloId.isPresent() ) {
 			fail("Não excluiu a chave");
 		}
 
-	};
+//	};
 	
 	@Test
 	public void devebuscarChavePorId() {
-		Optional<Chave> novaChave = chaveService.incluirChave(chave);
+//		Optional<Chave> novaChave = chaveService.incluirChave(chave);
 		
-		Optional<Chave> buscarChavePeloId = chaveService.buscarChavePeloId(novaChave.get().getId());
+//		Optional<Chave> buscarChavePeloId = chaveService.buscarChavePeloId(novaChave.get().getId());
 		
-		if( !buscarChavePeloId.isPresent() ) {
+//		if( !buscarChavePeloId.isPresent() ) {
 			fail("Não trouxe a chave");
 		}
-	};
+//	};
 	
 	@Test
 	public void devebuscarTodasChaves() {
-		chaveService.incluirChave( new Chave("Chave 1", "VALOR 1") );
-		chaveService.incluirChave( new Chave("Chave 2", "VALOR 2") );
-		chaveService.incluirChave( new Chave("Chave 3", "VALOR 3") );
-		
+//		chaveService.incluirChave( new Chave("Chave 1", "VALOR 1") );
+//		chaveService.incluirChave( new Chave("Chave 2", "VALOR 2") );
+//		chaveService.incluirChave( new Chave("Chave 3", "VALOR 3") );
+//		
 		Page<Chave> todasChaves = chaveService.buscarTodasChaves(0, 10);
 		
 		Assert.assertEquals("Quantidades diferentes", todasChaves.getNumberOfElements(), 3); 

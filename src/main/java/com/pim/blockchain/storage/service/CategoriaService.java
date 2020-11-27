@@ -17,6 +17,8 @@ public interface CategoriaService {
 	Optional<Categoria> buscarCategoriaPeloId(int id);
 	
 	Page<Categoria> buscarTodasCategorias(int pagina, int count);
-	
+
+//	Page<Categoria> buscarTodasCategoriasAtivas(Categoria categoria, int page, int count);
+
 
 }

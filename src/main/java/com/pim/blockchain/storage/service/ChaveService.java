@@ -8,7 +8,7 @@ import com.pim.blockchain.storage.entity.Chave;
 
 public interface ChaveService {
 	
-	Optional<Chave> incluirChave(Chave chave);
+	Optional<Chave> incluirChave(Chave chave) throws Exception;
 	
 	Optional<Chave> alterarChave(Chave chave);
 	

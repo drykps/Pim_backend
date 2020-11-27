@@ -2,10 +2,17 @@ package com.pim.blockchain.storage.entity;
 
 import java.util.Date;
 
-import com.pim.blockchain.storage.enums.GeneroEnum;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
 public class InformacaoUsuario {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String nome;
 	private int cpf;
@@ -13,10 +20,12 @@ public class InformacaoUsuario {
 	private int cnpj;
 	private int telefone;
 	private int telefoneCelular;
-	private GeneroEnum genero;
 	private Date dataNascimento;
+	@OneToOne(targetEntity = Usuario.class)
 	private int idUsuario;
 	
+	public InformacaoUsuario() {
+	}
 	
 	public int getId() {
 		return id;
@@ -59,12 +68,6 @@ public class InformacaoUsuario {
 	}
 	public void setTelefoneCelular(int telefoneCelular) {
 		this.telefoneCelular = telefoneCelular;
-	}
-	public GeneroEnum getGenero() {
-		return genero;
-	}
-	public void setGenero(GeneroEnum genero) {
-		this.genero = genero;
 	}
 	public Date getDataNascimento() {
 		return dataNascimento;
