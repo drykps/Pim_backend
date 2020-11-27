@@ -2,10 +2,14 @@ package com.pim.blockchain.storage.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -15,8 +19,11 @@ public class Chave {
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
-    @NotBlank(message="Nome é obrigatório")
+	@NotBlank(message="O nome é obrigatório")
+    @Column(nullable = false, unique = true)
     private String nomeChave;
+	
+	@NotBlank(message="A chave é obrigatória")
     private String valorChave;
     private int idCategoria;
     private LocalDate dataCriacao;

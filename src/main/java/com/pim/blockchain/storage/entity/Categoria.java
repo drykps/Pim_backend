@@ -2,6 +2,7 @@ package com.pim.blockchain.storage.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Categoria {
     private int id;
     
     @NotBlank(message="Nome é obrigatório")
+    @Column(nullable = false, unique = true)
     private String nome;
     private String descricao;
     private boolean ativo;
@@ -33,7 +35,8 @@ public class Categoria {
     }
 
 	public Categoria(int id) {
-		
+		this();
+		this.id = id;
 	}
 
 	public int getId() {

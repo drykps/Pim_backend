@@ -2,6 +2,7 @@ package com.pim.blockchain.storage.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,17 +21,28 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+	
+	@NotBlank(message="O campo nome é obrigatório")
+	@Column(nullable = false, unique = true)
 	private String nome;
+	
+	@NotBlank(message="O cpf/cnpj é obrigatório")
+	@Column(nullable = false, unique = true)
 	private String documento;
+	
     @NotBlank(message="Email é obrigatório")
     @Email(message="Email invalido")
+    @Column(nullable = false, unique = true)
     private String email;
+    
     @NotBlank(message="Senha é obrigatória")
     @Size(min = 6)
     private String senha;
+    
     @Enumerated(EnumType.ORDINAL)
     private TipoUsuarioEnum tipoUsuario;
-    private boolean ativo = true;
+    
+    private boolean ativo;
 	private Date ultimoLogin;
     private Date dataCriacao;
     
