@@ -24,11 +24,11 @@ public class ChaveServiceImpl implements ChaveService {
 
 	@Override
 	public Optional<Chave> incluirChave(Chave chave) throws Exception {
-		Optional<Categoria> categoriaBanco = categoria.buscarCategoriaPeloId(chave.getCategoria().getId());
+		Optional<Categoria> categoriaBanco = categoria.buscarCategoriaPeloId(chave.getIdCategoria());
 		if (!categoriaBanco.isPresent()) {
 			throw new Exception("Categoria inexistente");
 		}
-		chave.setCategoria(categoriaBanco.get());
+		chave.setIdCategoria(categoriaBanco.get().getId());
 		return Optional.ofNullable(chaveRepository.save(chave));
 	}
 
